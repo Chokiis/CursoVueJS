@@ -8,26 +8,24 @@
 </head>
 <body>
     <script src="https://unpkg.com/vue@next"></script>
-    <!-- <div id="app">{{ text }}</div> --><!-- "{{ text }}" es la propiedad de un objeto. -->
-    <div id="app"></div> 
+    <div id="app">
+    </div> 
     <script>
         // vm = ViewModel
         const vm = Vue.createApp({ //Se pueden declarar variables de objetos y así se declaran objetos en Vue.
             data() { //Datos que se retornan.
                 return { // Retorna.
-                    // text: "Hola Vue" // Retorna la propiedad 'text' con valor "Hola Vue".
-                    
-                    text: "<p>Hola Vue</p>" // Se utiliza etiquetas html solamente con directiva v-html.
+
+                    // attr: "alt",
+                    attr: "src",
+                    img: "https://i.imgur.com/4clqUdj.jpeg"
                 };
             },
-            // Crea un template de VueJS
-            // template: `<div>{{ text }}</div>` // Con eso se puede agregar elementos de un HTML, en este caso imprime la propiedad.
+            // v-bind: modificar los valores de los atributos nativos de HTML o cualquier otro atributo que tenga el componente.
+            // template: `<img v-bind:src="img" v-bind:alt="img" />`
 
-            //template: `<div v-once v-text="text"></div>` // Interpolación de datos (directivas).
-            // v-once: directiva que renderiza solamente una vez los valores.
-
-            template: `<div v-html="text"></div>`
-            // v-html: parece a v-text, permite html
+            // se declara una variable mediante corchetes o cadena de texto.
+            template: `<img v-bind:[attr]="img" />`
 
         }).mount("#app"); // Con esto sincroniza el identificador con el nombre (tipo "#NombreDeIdentificador").
         console.log(vm); // Imprime en consola la const vm.
